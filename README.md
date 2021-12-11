@@ -1,9 +1,13 @@
 # ALLOW REQUEST BY COUNTRY
 Use this script to easily allow request only from the countries you choose.
 Edit main.sh as you want and execute IT, and it will generate a script call
-If you want to update the rules, we recoment to DELETE previuos iptables rules created with this scriopt and generate a neew set of rules.
+If you want to update the rules, we recoment to DELETE previuos iptables rules created with this scriopt and generate a new set of rules.
 
-## On main.sh file
+## REQUIREMENTS
+- NODE.JS
+
+## INSTRUCTIONS
+### On main.sh file
 - Uncomment what you need 
 - Change the country or countries code you want
 - Change the ports to your ports
