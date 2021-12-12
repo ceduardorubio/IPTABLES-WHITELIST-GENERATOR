@@ -7,7 +7,7 @@
         "download": "wget https://download.ip2location.com/lite/IP2LOCATION-LITE-DB1.CSV.ZIP;",
         "unzip": "unzip IP2LOCATION-LITE-DB1.CSV.ZIP -d ./DB;",
         "remove_zip": "rm IP2LOCATION-LITE-DB1.CSV.ZIP;",
-        "start": "node index.js"
+        "start": "npm run download; npm run unzip; npm run remove_zip; node index.js"
     },
     "repository": {
         "type": "git",
