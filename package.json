@@ -11,12 +11,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ceduardorubio/ALLOW-REQUEST-BY-COUNTRY.git"
+        "url": "git+https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES.git"
     },
     "author": "carlos velasquez",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/ceduardorubio/ALLOW-REQUEST-BY-COUNTRY/issues"
+        "url": "https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES/issues"
     },
-    "homepage": "https://github.com/ceduardorubio/ALLOW-REQUEST-BY-COUNTRY#readme"
+    "homepage": "https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES#readme"
 }

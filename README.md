@@ -10,3 +10,9 @@ Don't forget to add your ip and port you need to access to your server [like you
 - CURL
 - UNZIP
 - NODE.JS
+
+## config.js
+```js
+const COUNTRY_CODES = ["US"]; // replace with the countries you want to add to your whitelist or blacklist
+const PORTS = ["443"]; // replace with the ports you want to add to your whitelist or blacklist
+```
