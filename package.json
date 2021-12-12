@@ -1,0 +1,22 @@
+{
+    "name": "ip-country-filter-list",
+    "version": "1.0.0",
+    "description": "Use this script to easily allow request only from the countries you choose. Edit main.sh as you want and execute IT, and it will generate a script call If you want to update the rules, we recoment to DELETE previuos iptables rules created with this scriopt and generate a new set of rules.",
+    "main": "GETIPTABLESRULES.js",
+    "scripts": {
+        "download": "wget https://download.ip2location.com/lite/IP2LOCATION-LITE-DB1.CSV.ZIP;",
+        "unzip": "unzip IP2LOCATION-LITE-DB1.CSV.ZIP -d ./DB;",
+        "remove_zip": "rm IP2LOCATION-LITE-DB1.CSV.ZIP;",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ceduardorubio/ALLOW-REQUEST-BY-COUNTRY.git"
+    },
+    "author": "carlos velasquez",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ceduardorubio/ALLOW-REQUEST-BY-COUNTRY/issues"
+    },
+    "homepage": "https://github.com/ceduardorubio/ALLOW-REQUEST-BY-COUNTRY#readme"
+}
