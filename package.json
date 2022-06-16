@@ -18,5 +18,8 @@
     "bugs": {
         "url": "https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES/issues"
     },
-    "homepage": "https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES#readme"
+    "homepage": "https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES#readme",
+    "dependencies": {
+        "decompress": "^4.2.1"
+    }
 }

@@ -43,3 +43,4 @@
 
 DB/
 iptables.sh
+node_modules/
