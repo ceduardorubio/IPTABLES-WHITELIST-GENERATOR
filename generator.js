@@ -1,3 +1,5 @@
+let fs = require('fs');
+
 function IpNumberTo8BitsSegments(ipNumber) {
     let binaryIP = Number(ipNumber).toString(2);
     let binary32digitsIp = binaryIP.padStart(32, '0');

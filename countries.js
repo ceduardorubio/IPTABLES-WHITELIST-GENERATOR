@@ -18,5 +18,4 @@ function GetCountries(ipListPath) {
     return distinct.filter(line => line[0] !== undefined);
 }
 
-let c = GetCountries("./DB/IP2LOCATION-LITE-DB1.CSV");
-c.forEach(c => console.log(c[0] + " - " + c[1]));
+module.exports = GetCountries;
