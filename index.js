@@ -30,7 +30,8 @@ download('https://download.ip2location.com/lite/IP2LOCATION-LITE-DB1.CSV.ZIP', '
                 let codes = str_codes.split(",").map(c => c.toUpperCase());
                 if (codes.length === 1 && codes[0] === "") codes = ["US"];
                 ScriptGenerator(ports, codes, ipListPath, content => {
-                    console.log("iptables file generated. Dont forget to add your own rules to the script in the comment section");
+                    console.log("iptables file generated. Don't forget to add your own rules to the script in the comment section");
+                    console.log(" * thanks to ip2location.com, the IP list is provided under the terms of the IP2LocationLite license. * ");
                     fs.writeFileSync("./iptables", content);
                     process.exit(0);
                 });
