@@ -13,16 +13,19 @@ var download = function(url, dest, cb) {
     });
 }
 
-module.exports = function(cb) {
-    download('https://download.ip2location.com/lite/IP2LOCATION-LITE-DB1.CSV.ZIP', './IP2LOCATION-LITE-DB1.CSV.ZIP', function() {
-        extract('./IP2LOCATION-LITE-DB1.CSV.ZIP', './DB', function() {
-            cb();
-        });
-    });
+module.exports = {
+    download,
+    extract
 }
 
 //extract the zip file
 //unzip the file
 function extract(file, dest, cb) {
-    decompress(file, dest).then(files => cb);
+    decompress(file, dest).then(files => function() {
+        console.log('done decompressing');
+    }).catch(err => {
+        console.error(err);
+    }).finally(() => {
+        cb();
+    });
 }

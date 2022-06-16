@@ -1,8 +1,3 @@
-let { COUNTRY_CODES, PORTS } = require("./config.js");
-let fs = require('fs');
-let result = "";
-const chainName = "COUNTRIES_WHITELIST_" + PORTS.join("_") + "_" + COUNTRY_CODES.join("_");
-
 function IpNumberTo8BitsSegments(ipNumber) {
     let binaryIP = Number(ipNumber).toString(2);
     let binary32digitsIp = binaryIP.padStart(32, '0');
@@ -10,12 +5,14 @@ function IpNumberTo8BitsSegments(ipNumber) {
     return segments8bits.map(segment => parseInt(segment, 2)).join(".");
 }
 
-function AppendOutput(output) {
-    result += output + "\r\n";
-}
+function ScriptGenerator(PORTS, COUNTRY_CODES, ipListPath, cb) {
+    console.log(PORTS, COUNTRY_CODES);
+    let result = "";
 
-
-function ScriptGenerator(ipListPath, cb) {
+    function AppendOutput(output) {
+        result += output + "\r\n";
+    }
+    const chainName = "COUNTRIES_WHITELIST_" + PORTS.join("_") + "_" + COUNTRY_CODES.join("_");
     let ipranges = fs.readFileSync(ipListPath, "utf8")
         .split("\r\n").map(line => {
             let [min, max, code, name] = line.replaceAll('"', '').split(",");
@@ -31,8 +28,6 @@ function ScriptGenerator(ipListPath, cb) {
     AppendOutput(`# add your other matching ports rules here`);
     AppendOutput(`# dont forget to give your user access to the ports you want to allow [ssh, http, https, etc]`);
     AppendOutput(`iptables -A INPUT -p tcp -m multiport --dports ${PORTS.join(",")} -j DROP;`);
-    // fs.writeFileSync("./iptables.sh", result);
-    // console.log("iptables.sh generated. Dont forget to add your own rules to the script in the comment section");
     cb(result);
 }
 
