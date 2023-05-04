@@ -42,6 +42,6 @@
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
 DB/
-iptables
+iptables_scripts/
 node_modules/
 IP2LOCATION-LITE-DB1.CSV.ZIP
