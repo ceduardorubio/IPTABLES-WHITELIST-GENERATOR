@@ -1,4 +1,6 @@
 let fs = require('fs');
+const ipListFile = "./DB/IP2LOCATION-LITE-DB1.CSV";
+
 
 function IpNumberTo8BitsSegments(ipNumber) {
     let binaryIP = Number(ipNumber).toString(2);
@@ -7,14 +9,14 @@ function IpNumberTo8BitsSegments(ipNumber) {
     return segments8bits.map(segment => parseInt(segment, 2)).join(".");
 }
 
-function ScriptGenerator(PORTS, COUNTRY_CODES, ipListPath,chainName ,cb) {
+function ScriptGenerator(PORTS, COUNTRY_CODES,chainName,IpAddresses,cb) {
     console.log(PORTS, COUNTRY_CODES);
     let result = "";
 
     function AppendOutput(output) {
         result += output + "\n";
     }
-    let ipRanges = fs.readFileSync(ipListPath, "utf8")
+    let ipRanges = fs.readFileSync(ipListFile, "utf8")
         .split("\r\n").map(line => {
             let [min, max, code, name] = line.replaceAll('"', '').split(",");
             return [IpNumberTo8BitsSegments(min), IpNumberTo8BitsSegments(max), code, name];
@@ -26,14 +28,31 @@ function ScriptGenerator(PORTS, COUNTRY_CODES, ipListPath,chainName ,cb) {
     AppendOutput(`# the countries codes are: ${COUNTRY_CODES.join(",")}`);
     AppendOutput(`# the ports are: ${PORTS.join(",")}`);
     AppendOutput(`# this script will allow the countries codes ${COUNTRY_CODES.join(",")} to access the ports ${PORTS.join(",")}. All other countries will be blocked.`);
+
+    if(IpAddresses.length > 0) AppendOutput(`# Allow devices ip addresses to access to all ports.`);
+    if(IpAddresses.length > 0) IpAddresses.forEach( i => AppendOutput(`iptables -I INPUT  -p tcp -s ${i} -j ACCEPT;`) );
+    if(IpAddresses.length > 0) IpAddresses.forEach( i => AppendOutput(`iptables -I OUTPUT -p tcp -s ${i} -j ACCEPT;`));
+
+    AppendOutput(`# Creating the new chain ${chainName}`)
     AppendOutput(`iptables -N ${chainName};`);
-    AppendOutput(ipRanges.map(r => `iptables -A ${chainName} -m iprange --src-range ${r[0]}-${r[1]} -j ACCEPT;`).join("\n"));
+    AppendOutput(`# Allowing the countries codes ${COUNTRY_CODES.join(",")} to access the ports ${PORTS.join(",")}. All other countries will be blocked.`);
+    AppendOutput(ipRanges.map(r => {
+        let range = (r[0] + "-" + r[1]).padEnd(33, " ");
+        let result = `iptables -A ${chainName} -m iprange --src-range ${range} -j ACCEPT;`;
+        return result;
+    }).join("\n"));
+    AppendOutput(`# Ending the chain ${chainName} with a RETURN rule`);
     AppendOutput(`iptables -A ${chainName} -j RETURN`);
+    AppendOutput(`# Adding the chain ${chainName} to the INPUT chain with the ports ${PORTS.join(",")}`);
     AppendOutput(`iptables -A INPUT -p tcp -m multiport --dports ${PORTS.join(",")} -j ${chainName};`);
+
     AppendOutput(`# add other COUNTRIES_WHITELIST matching ports chains here`);
     AppendOutput(`# add your other matching ports rules here`);
-    AppendOutput(`# dont forget to give your user access to the ports you want to allow [ssh, http, https, etc]`);
-    AppendOutput(`iptables -A INPUT -p tcp -m multiport --dports ${PORTS.join(",")} -j DROP;`);
+    AppendOutput(`# don't forget to give your user access to the ports you want to allow [ssh, http, https, etc]`);
+    AppendOutput(`# EXECUTE THE LAST LINE ONLY IF YOU ARE SURE ABOUT THE RULES YOU ADDED ABOVE. EXECUTING THIS LINE WILL DROP ALL OTHER TRAFFIC TO THE PORTS ${PORTS.join(",")}.`);
+    AppendOutput(`# IF THERE WERE ANY ERRORS EXECUTING THE PREVIOUS LINES, YOU WILL BE LOCKED OUT OF YOUR SERVER. YOU WILL NEED TO ACCESS YOUR SERVER THROUGH THE CONSOLE AND DELETE THE CHAIN ${chainName} MANUALLY.`);
+    AppendOutput(``);
+    AppendOutput(`# iptables -A INPUT -p tcp -m multiport --dports ${PORTS.join(",")} -j DROP;`);
     cb(result);
 }
 
