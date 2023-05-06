@@ -2,11 +2,15 @@
 Use this tool to create a iptables script and easily allow request to your server only from the countries you choose(countries whitelist). You will need to execute the resulting script inside the server you want to protect (server target)
 
 The ip ranges list is from ip2location.com.
-Don't forget to include[if is not included in the ranges] your ip and port you need to access to your server [like your ssh port]
+Dont forget to include[if is not included in the ranges] your ip and port you need to access to your server [like your ssh port]
 
 IMPORTANT: The rules generated are related ONLY to the selected countries and ports .
+!!! We advice not to deny access to all ports
 
-prevent DDOS!!!
+Reduce the possibility of DDOS!!!
+
+Use this tool with servers that are serving to specific countries.
+
 ## REQUIREMENTS
 - NODE.JS / NPM
 
@@ -94,7 +98,7 @@ In the next example the target server(mysql server) will be access for the admin
 ```bash
 Enter the IP PUBLIC Addresses you want to EXPLICITLY ALLOW ACCESS TO ALL PORTS REMOTELY, no matter the country.
 Enter the IP Addresses separated by coma (,). [Example: 1.1.1.1,8.8.8.8]
-Don't forget to enter the public ip addresses of the devices you will use to access to your server
+Dont forget to enter the public ip addresses of the devices you will use to access to your server
 Or if you are in the same LAN with the server, add your local ip address too. (like 192.168.xxx.xxx)
 You can get your public IP Address from https://www.whatismyip.com/ or your local ip using your system network manager.
   [default: no ip addresses]:
@@ -132,7 +136,7 @@ ZW - Zimbabwe
 
 Enter the countries codes separated by coma (,).[Example: US,GB ]:
 US
-[ 22, 80 ] [ 'EC' ]
+[ 22, 80 ] [ 'US' ]
 
 ```
 ## Script Generated Successfully
@@ -142,12 +146,12 @@ The script will:
 
 
 Deny these ports to everyone     : xx,yy,zzz....
-These ip addresses be allowed       : xxx.xxx.xxx.xxx,yyy.yyy.yyy.yyy, ...
+These ip addresses be allowed    : xxx.xxx.xxx.xxx,yyy.yyy.yyy.yyy, ...
 processing ...
 
 IPTABLES FILE GENERATED!!!
 
-Don't forget to add your own rules to the script in the comment section
+Dont forget to add your own rules to the script in the comment section
  read and edit the file ./iptables_cwDateTimeNumber.sh and execute it with bash the iptables_cwDateTimeNumber.sh
 
  READ THE COMMENTS IN THE SCRIPT BEFORE EXECUTING IT!
@@ -187,6 +191,8 @@ Copy the generated script into the server you want to protect, with tools ls scp
 Carlos Velasquez
 
 ## JUST READ THE CODE 
-- ## READ THE GENERATED SCRIPT BEFORE EXECUTE IT !!!
-- ## MAKE SURE NOT TO LOCK YOURSELF OUT OF THE SERVER !!!
+- ### READ THE GENERATED SCRIPT BEFORE EXECUTE IT !!!
+- ### THE GENERATED SCRIPT DOESN'T DENY OUTGOING TRAFFIC ON ANY PORT
+- ### MAKE SURE THERE IS NOT PREVIOUS SECURITY BREACHES 
+- ### MAKE SURE NOT TO LOCK YOURSELF OUT OF THE SERVER !!!
 
