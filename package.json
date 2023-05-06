@@ -1,18 +1,19 @@
 {
-    "name": "ip-country-filter-list",
+    "name": "iptables-whitelist",
     "version": "1.0.0",
     "description": "Use this script to easily allow request only from the countries you choose.",
-    "main": "index.js",
-    "scripts": {
-        "download": "wget https://download.ip2location.com/lite/IP2LOCATION-LITE-DB1.CSV.ZIP;",
-        "unzip": "unzip IP2LOCATION-LITE-DB1.CSV.ZIP -d ./DB;",
-        "remove_zip": "rm IP2LOCATION-LITE-DB1.CSV.ZIP;",
-        "start": "node index.js"
+    "main": "./bin/iptables-whitelist.js",
+    "bin": {
+        "iptables-whitelist": "./bin/iptables-whitelist"
     },
+    "scripts": {
+        "start": "node ./bin/iptables-whitelist.js"
+      },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES.git"
     },
+    "preferGlobal": true,
     "author": "carlos velasquez",
     "license": "ISC",
     "bugs": {
