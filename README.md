@@ -11,6 +11,30 @@ Reduce the possibility of DDOS!!!
 
 Use this tool with servers that are serving to specific countries.
 
+# IMPORTANT
+
+## Security in your servers 
+*SECURITY IS IMPORTANT NO MATTER WHAT PROJECT ARE YOU WORKING ON OR IF YOU ARE WORKING ON A DEVELOPMENT SERVER*. 
+
+We strongly recommend to use this tool in ports for public services like web servers, api servers, etc, and use strict specific rules for other services like databases, ssh, etc.
+
+
+### YOU MUST RESTRICT ALL ACCESS TO CRITICAL SERVICES LIKE DATABASES OR ANY SERVICES THAT HANDLES USER DATA OR INCLUDES ADMINISTRATION ACCESS. IF IT IS POSSIBLE ONLY ALLOW ACCESS TO THE IP ADDRESSES  FOR ADMINISTRATION  AND SERVICES COMMUNICATION ###
+
+-You must have knowledge about iptables, intrusions detection systems, and any other security tool you can use to protect your server from intrusions and attacks.
+
+
+- Make sure to have a firewall installed and configured in your server
+- Make sure to have a backup of your server
+- Make sure to have a plan in case of a security breach, like a backup of your data, a plan to restore your server, etc.
+- Make sure to have a way to access to your server in case you can access to it using ssh or other services
+- Make sure to know the statistics of your server, like the number of request per second, the number of request per day, etc so you can detect any unusual activity
+- Make sure to have a plan to detect and block intrusions and attacks
+- Make sure to strongly encrypt all the sensitive data in your server
+- Make sure to use strong passwords
+- Make sure to use strong authentication methods, like ssh keys instead of passwords, or 2 factor authentication
+ 
+
 ## REQUIREMENTS
 - NODE.JS / NPM
 

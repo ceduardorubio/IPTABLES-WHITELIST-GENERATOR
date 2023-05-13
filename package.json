@@ -1,6 +1,6 @@
 {
     "name": "iptables-whitelist",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Use this script to easily allow request only from the countries you choose.",
     "main": "./bin/iptables-whitelist.js",
     "bin": {
