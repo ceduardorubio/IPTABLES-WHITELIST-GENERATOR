@@ -39,7 +39,7 @@ We strongly recommend to use this tool in ports for public services like web ser
 - NODE.JS / NPM
 
 ## CODE 
-- Read this code in https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES 
+- Read this code in https://github.com/ceduardorubio/IPTABLES-WHITELIST-GENERATOR 
 
 ## INSTALLATION
 ```bash
@@ -66,7 +66,7 @@ You can use local and update options together
 
  WE STRONGLY RECOMMEND THE USE OF THIS TOOL ONLY FOR DEVELOPERS WITH AT LEAST BASIC KNOWLEDGE ABOUT IPTABLES
 
-Read de code in https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES
+Read de code in https://github.com/ceduardorubio/IPTABLES-WHITELIST-GENERATOR
 This is a Free Tool
 
 Thanks to ip2location.com, the IP list is provided under the terms of the IP2LocationLite license.

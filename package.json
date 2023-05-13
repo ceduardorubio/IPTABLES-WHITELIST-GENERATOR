@@ -1,6 +1,6 @@
 {
     "name": "iptables-whitelist",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Use this script to easily allow request only from the countries you choose.",
     "main": "./bin/iptables-whitelist.js",
     "bin": {
@@ -11,15 +11,15 @@
       },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES.git"
+        "url": "git+https://github.com/ceduardorubio/IPTABLES-WHITELIST-GENERATOR.git"
     },
     "preferGlobal": true,
     "author": "carlos velasquez",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES/issues"
+        "url": "https://github.com/ceduardorubio/IPTABLES-WHITELIST-GENERATOR/issues"
     },
-    "homepage": "https://github.com/ceduardorubio/WHITELISTS-BY-COUNTRIES#readme",
+    "homepage": "https://github.com/ceduardorubio/IPTABLES-WHITELIST-GENERATOR#readme",
     "dependencies": {
         "decompress": "^4.2.1"
     }
