@@ -40,7 +40,8 @@ function SecurityCheck(cb){
     msg += `Enter the IP Addresses separated by coma (,). [Example: 1.1.1.1,8.8.8.8] \n`;
     msg += `Don't forget to enter the public ip addresses of the devices you will use to access to your server\n`;
     msg += `Or if you are in the same LAN with the server, add your local ip address too. (like 192.168.xxx.xxx)\n`;
-    msg += `You can get your public IP Address from https://www.whatismyip.com/ or your local ip using your system network manager.\n`;
+    msg += `You can get your public IP Address from https://www.whatismyip.com/ or your local ip using your system network manager.\n\n`;
+    msg += `DON'T FORGET TO PUT THE IP OF YOUR SERVER HERE: [ifconfig (eth0 ,eth1...)].\n\n`;
     msg += `  [default: no ip addresses]:\n`
     rl.question(msg, (devicesIpAddresses = "") => {
         if( devicesIpAddresses === "" || devicesIpAddresses === null || devicesIpAddresses === undefined){

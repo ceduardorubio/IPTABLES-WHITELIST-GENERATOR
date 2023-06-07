@@ -220,3 +220,5 @@ Carlos Velasquez
 - ### MAKE SURE THERE IS NOT PREVIOUS SECURITY BREACHES 
 - ### MAKE SURE NOT TO LOCK YOURSELF OUT OF THE SERVER !!!
 
+## CHANGELOG
+- ### 1.0.5 - Includes recommendation in the prompt to add the ip address of the server in which you will execute the script
